@@ -1,0 +1,32 @@
+<div class="block">
+  <h1>Producten</h1>
+</div>
+<div class="knop">
+  <p><a class="btn btn-primary btn-lg" routerLink="/toevoegen" href="#" role="button">Product toevoegen &raquo;</a></p>
+</div>
+
+  <div>
+  <input type="text" class="form-control" name="searchString" placeholder="Zoek op productnaam..." [(ngModel)]="searchString">
+</div>
+<br>
+<br>
+<div class = "card">
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Naam</th>
+      <th scope="col">Prijs</th>
+      <th scope="col">Aantal</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let product of producten | zoekFilter : 'naam' : searchString" >
+      <td >{{product.naam}}</td>
+      <td>{{product.prijs}}</td>
+      <td>{{product.aantal}}</td> 
+      <td><button type="button" (click)="verwijderProduct(product)" class="btn btn-danger">Verwijder</button></td>
+    </tr>
+  </tbody>
+</table>
+</div>

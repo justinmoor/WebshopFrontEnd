@@ -1,0 +1,45 @@
+<div *ngIf="done" class="alert alert-success">
+	<strong>Klaar!</strong> De producten zijn besteld!
+  </div>
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+<div *ngIf="!done" class="container">
+	<table id="cart" class="table table-hover table-condensed">
+		<thead>
+			<tr>
+				<th style="width:50%">Product</th>
+				<th style="width:10%">Prijs</th>
+				<th style="width:8%">Aantal</th>
+				<th style="width:22%" class="text-center">Totaal</th>
+				<th style="width:10%"></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr *ngFor="let item of items">
+				<td data-th="Product">
+					<div class="row">
+						<img class="card-img-top" src="http://localhost:8080/producten/images/{{item.product.path}}" alt="Card image cap">
+						<div class="col-sm-10" style="padding-left:50px;"S>
+							<h4 class="nomargin">{{item.product.naam}}</h4>
+						</div>
+					</div>
+				</td>
+				<td data-th="Price">€{{item.product.prijs}}</td>
+				<td data-th="Quantity">
+					{{item.aantal}}
+				</td>
+				<td data-th="Subtotal" class="text-center">{{item.product.prijs * item.aantal}}</td>
+				<td class="actions" data-th="">
+					<button class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></button>								
+				</td>
+			</tr>
+		</tbody>
+		<tfoot>
+			<tr>
+				<td><p routerLink="/producten" class="btn btn-warning"><i class="fa fa-angle-left"></i> Verder winkelen</p></td>
+				<td colspan="2" class="hidden-xs"></td>
+				<td class="hidden-xs text-center"><strong>Totaal: €{{totaal}}</strong></td>
+				<td><a class="btn btn-success btn-block" (click)="checkOut()">Checkout <i class="fa fa-angle-right"></i></a></td>
+			</tr>
+		</tfoot>
+	</table>
+</div>

@@ -1,0 +1,71 @@
+<head> 
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- Website Font style -->
+	    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+		<title>Registreren</title>
+	</head>
+	<body>
+		<div class="container">
+			<div class="row main">
+				<div class="main-login main-center">
+					<form [formGroup]="form" class="form-horizontal" method="post" action="#">
+              <div class="panel-heading">
+                  <div class="panel-title text-center">
+                      <h1 class="title">Registreren</h1>
+                      <hr>
+                    </div>
+				   </div> 
+				<div class="form-group" >
+					<label for="name" class="cols-sm-2 control-label">Uw naam</label>
+					<div class="cols-sm-10">
+						<div class="input-group">
+							<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+							<input type="text" class="form-control" [(ngModel)]="user.voornaam" name="voornaam" id="name"  placeholder="Voer uw voornaam in" formControlName="voornaam"/>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="email" class="cols-sm-2 control-label">Uw achternaam</label>
+					<div class="cols-sm-10">
+						<div class="input-group">
+							<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+							<input type="text" class="form-control" [(ngModel)]="user.achternaam" name="achternaam" id="email"  placeholder="Voer uw achternaam in" formControlName="achternaam"/>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="username" class="cols-sm-2 control-label">Uw e-mailadres</label>
+					<div class="cols-sm-10">
+						<div class="input-group">
+							<span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+							<input type="text" class="form-control" [(ngModel)]="user.email" name="email" id="email"  placeholder="Voer uw e-mailadres in" formControlName="email"/>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="password" class="cols-sm-2 control-label">Uw wachtwoord</label>
+					<div class="cols-sm-10">
+						<div class="input-group">
+							<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+							<input type="password" class="form-control" name="password" id="password"  placeholder="Voer uw wachtwoord in" formControlName="wachtwoord"/>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="confirm" class="cols-sm-2 control-label">Bevestig uw wachtwoord</label>
+					<div class="cols-sm-10">
+						<div class="input-group">
+							<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+							<input type="password" class="form-control" [(ngModel)]="user.wachtwoord" name="wachtwoord" id="confirm"  placeholder="Bevestig uw wachtwoord" formControlName="bwachtwoord"/>
+						</div>
+					</div>
+				</div>
+				<div class="form-group ">
+					<button type="submit" (click)="registreer()"style="width: 100%;" [disabled]="form.invalid" class="btn btn-success">Registreer</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+	<script type="text/javascript" src="assets/js/bootstrap.js"></script>
+</body>

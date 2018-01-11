@@ -1,0 +1,36 @@
+<!--<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input type="text" class="form-control" id="name" placeholder="Bob" formControlName="name">
+  </div>
+  <div class="form-group">
+    <label for="avatar">Avatar</label>
+    <input type="file" id="plaatje" (change)="onFileChange($event)" #fileInput>
+    <button type="button" class="btn btn-sm btn-default" (click)="clearFile()">clear file</button>
+  </div>
+  <button type="submit" [disabled]="form.invalid || loading" class="btn btn-success">Submit <i class="fa fa-spinner fa-spin fa-fw" *ngIf="loading"></i></button>
+</form> -->
+<h1>Product toevoegen</h1>
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label for="exampleFormControlInput1">Product naam</label>
+    <input [(ngModel)]="naam"type="email" class="form-control" id="productnaam" formControlName="name">
+  </div>
+  <div class="form-group">
+    <label for="beschrijving">Product beschrijving</label>
+    <textarea [(ngModel)]="beschrijving"class="form-control" id="beschrijving" rows="3" formControlName="beschrijving"></textarea>
+  </div>
+  <div class="form-group">
+    <label for="prijs">Prijs</label>
+    <input [(ngModel)]="prijs" type="number" class="form-control" id="prijs" formControlName="prijs">
+  </div>
+  <div class="form-group">
+    <label for="aantal">Aantal</label>
+    <input [(ngModel)]="aantal" type="number" class="form-control" id="exampleFormControlSelect1" formControlName="aantal">
+  </div>
+  <div class="form-group">
+    <label for="plaatje">Productfoto</label>
+    <input type="file" id="avatar" class="form-control-file" (change)="onFileChange($event)" #fileInput >
+  </div>
+  <button type="submit" [disabled]="form.invalid || loading" class="btn btn-success">Submit <i class="fa fa-spinner fa-spin fa-fw" *ngIf="loading"></i></button>
+</form> 

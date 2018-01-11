@@ -1,0 +1,43 @@
+<nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
+  <a class="navbar-brand" href="#" routerLink="">Webshop</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="navbar-nav ml-auto" id="navbarsExampleDefault">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="#" routerLink="/producten">Producten</a>
+      </li>
+    </ul>
+    <ul *ngIf="auth.getActiveUser() == null" class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="#" routerLink="/login">Login</a>
+      </li>
+    </ul>
+    <ul *ngIf="auth.getActiveUser() == null" class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="#" routerLink="/registreren">Registreren</a>
+      </li>
+    </ul>
+    <ul *ngIf="auth.getActiveUser() != null" class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="#" routerLink="/winkelwagen">Winkelwagen</a>
+      </li>
+    </ul>
+    <ul *ngIf="auth.getActiveUser() != null && auth.getActiveUser().admin == true" class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="#" routerLink="/inventaris" >Inventaris</a>
+      </li>
+    </ul>
+    <ul *ngIf="auth.getActiveUser() != null && auth.getActiveUser().admin == true" class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="#" routerLink="/klanten" >Klanten</a>
+      </li>
+    </ul>
+    <ul *ngIf="auth.getActiveUser() != null" class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="#" routerLink="/producten" (click)="logout()">Logout</a>
+      </li>
+    </ul>
+  </div>
+</nav>
