@@ -10,6 +10,9 @@ import { Http } from '@angular/http/src/http';
 @Injectable()
 export class ApiService{
 
+   // url : string = 'http://localhost:8080/api'
+    url: string = 'http://217.122.153.143:8080/api'
+
     constructor( private http: HttpClient, private authService: AuthorizationService){
 
     }
@@ -45,11 +48,11 @@ export class ApiService{
     }
 
     public registreer(data:Object){
-        return this.http.post('http://localhost:8080/user/registreer', data);
+        return this.http.post(this.url + '/user/registreer', data);
     }
 
     public uploadProduct(data:Object){
-        return this.http.post('http://localhost:8080/producten/toevoegen', data);
+        return this.http.post(this.url +'/producten/toevoegen', data);
     }
 
     private createURI(path: string, queryParameters: Object): string
@@ -60,31 +63,31 @@ export class ApiService{
     }
 
     public getLogin<T>(path:string, queryParameters?:Object):Observable<T>{
-        let uri = this.createURI(path, queryParameters);
+      //  let uri = this.createURI(path, queryParameters);
         let headers = this.createRequestHeaders();
 
-        return this.http.get<T>('http://localhost:8080/user/login', {headers:headers});
+        return this.http.get<T>(this.url + '/user/login', {headers:headers});
     }
 
     public getProducten(){
-        return this.http.get('http://localhost:8080/producten/all')
+        return this.http.get(this.url + '/producten/all')
     }
 
     public uploadImage(image : Object){
-        return this.http.post('http://localhost:8080/producten/uploadimage', image).subscribe();
+        return this.http.post(this.url +'/producten/uploadimage', image).subscribe();
     }
 
     public getUsers<T>(queryParameters?: Object): Observable<T>{
         let headers = this.createRequestHeaders();
-        return this.http.get<T>('http://localhost:8080/user/getall', {headers:headers});
+        return this.http.get<T>(this.url + '/user/getall', {headers:headers});
     }
 
     public verwijder(product:Object){
-        return this.http.post('http://localhost:8080/producten/verwijder', product).subscribe();
+        return this.http.post(this.url + '/producten/verwijder', product).subscribe();
     }
 
     public checkOut(items){
-        return this.http.post('http://localhost:8080/producten/checkout', items).subscribe();
+        return this.http.post(this.url + '/producten/checkout', items).subscribe();
     }
    
 }

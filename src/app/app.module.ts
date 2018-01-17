@@ -20,6 +20,7 @@ import { HomepageComponent } from './components/homepage/homepage.component';
 import { WinkelwagenComponent } from './components/winkelwagen/winkelwagen.component';
 import { WinkelwagenserviceService } from './services/winkelwagen/winkelwagenservice.service';
 import { GuardAdminGuard } from './guards/guard-admin.guard'
+import { InlogGuard } from './guards/inlog.guard'
 import { InventarisComponent } from './components/inventaris/inventaris.component';
 import { ZoekFilterPipe } from './pipes/zoek-filter.pipe';
 import { ToevoegenComponent } from './components/toevoegen/toevoegen.component';
@@ -34,10 +35,10 @@ const appRoutes:Routes = [
   { path:'login', component:LoginComponent },
   { path: 'producten', component:ProductenComponent},
   { path: 'registreren', component:RegistrerenComponent},
-  { path: 'winkelwagen', component:WinkelwagenComponent },
-  { path: 'inventaris', component:InventarisComponent, canActivate: [GuardAdminGuard] },
-  { path: 'toevoegen', component:ToevoegenComponent, canActivate: [GuardAdminGuard]},
-  { path: 'klanten', component:KlantenComponent, canActivate: [GuardAdminGuard] },
+  { path: 'winkelwagen', component:WinkelwagenComponent, canActivate: [InlogGuard] },
+  { path: 'inventaris', component:InventarisComponent, canActivate: [GuardAdminGuard, InlogGuard] },
+  { path: 'toevoegen', component:ToevoegenComponent, canActivate: [GuardAdminGuard, InlogGuard]},
+  { path: 'klanten', component:KlantenComponent, canActivate: [GuardAdminGuard,InlogGuard] },
   { path: '', component:HomepageComponent}
 ];
 
@@ -63,7 +64,7 @@ const appRoutes:Routes = [
     RouterModule.forRoot(appRoutes),
     ReactiveFormsModule
   ],
-  providers: [GuardAdminGuard, ProductserviceService, UserService, ApiService, AuthorizationService, WinkelwagenserviceService],
+  providers: [InlogGuard, GuardAdminGuard, ProductserviceService, UserService, ApiService, AuthorizationService, WinkelwagenserviceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

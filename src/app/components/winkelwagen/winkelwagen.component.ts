@@ -48,7 +48,6 @@ export class WinkelwagenComponent implements OnInit {
 
   checkOut(){
     this.winkelWagen.producten = this.producten
-    console.log(this.winkelWagen.producten[0])
     this.service.checkOut(this.winkelWagen)
     sessionStorage.removeItem("activeWinkelwagen")
     this.wagen.productenInWinkelwagen = []

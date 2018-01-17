@@ -34,7 +34,7 @@ public registreer(user:User){
     });
 }
 
-public login(user:User, remember:boolean):void{
+public login(user:User, remember:boolean):boolean{
     this.authService.setAuthorization(user.email, user.wachtwoord);
 
     this.api.getLogin<User>('user/login').subscribe(
@@ -42,11 +42,14 @@ public login(user:User, remember:boolean):void{
             this.authService.storeAuthorization(authenticator, remember);
             sessionStorage.setItem('activeUser', JSON.stringify(authenticator));
             this.goHome();
+            return false;
         },
         error => {
-            alert('Inloggen is mislukt!');
+            return true
         }
     )
+
+    return true
 }
 
 public getAll(): Observable<User[]>{

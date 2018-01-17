@@ -41,6 +41,9 @@
 						<div class="form-group ">
 							<button (click)="logIn()"type="button" class="btn btn-primary btn-lg btn-block login-button">Login</button>
 						</div>
+						<div *ngIf="fout" class="alert alert-danger">
+							<strong>Verkeerde inloggegevens!</strong>
+						  </div>
 					</form>
 				</div>
 			</div>

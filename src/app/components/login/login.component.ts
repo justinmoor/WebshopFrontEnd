@@ -13,6 +13,7 @@ import { URLSearchParams } from "@angular/http"
 export class LoginComponent {
 
   user: User = new User();
+  fout : boolean = false
 
 
   constructor(private userService:UserService, private apiService:ApiService) {
@@ -20,6 +21,8 @@ export class LoginComponent {
    }
 
   logIn() {
-    this.userService.login(this.user, false)
+    
+    this.fout = this.userService.login(this.user, false)
+    console.log(this.fout)
   }
 }
